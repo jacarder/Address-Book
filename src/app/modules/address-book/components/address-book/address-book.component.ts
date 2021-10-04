@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-address-book',
+  selector: 'address-book',
   templateUrl: './address-book.component.html',
-  styleUrls: ['./address-book.component.scss']
+  styleUrls: ['./address-book.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddressBookComponent implements OnInit {
 
