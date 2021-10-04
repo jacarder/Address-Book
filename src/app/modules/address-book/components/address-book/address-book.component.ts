@@ -15,11 +15,10 @@ export class AddressBookComponent implements OnInit {
 
   loading$ = this.addressBookQuery.selectLoading();
 
-  constructor(private addressBookService: AddressBookService, private addressBookQuery: AddressBookQuery) { }
+  constructor(private addressBookQuery: AddressBookQuery) { }
   
   ngOnInit(): void {
-    this.addressBookService.get().pipe(
-      switchMap(() => this.addressBookQuery.selectAddresses()),
+    this.addressBookQuery.selectAddresses().pipe(
       tap((results) => {
         console.log("made it", results)
       })
