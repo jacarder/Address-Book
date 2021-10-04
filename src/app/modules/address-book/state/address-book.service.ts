@@ -21,7 +21,7 @@ export class AddressBookService {
       map((list: IRandomUserResponse) => {
         return list.results.map(entry => {
           let newEntry = {
-            id: entry.id.value,
+            id: entry.login.uuid,
             name: {
               first: entry.name.first,
               last: entry.name.last
