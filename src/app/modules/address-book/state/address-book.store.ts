@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Store, StoreConfig } from '@datorama/akita';
+import { EntityState, EntityStore, StoreConfig } from '@datorama/akita';
+import { AddressEntry } from './address-Entry.model';
 
-export interface AddressBookState {
-   key: string;
+export interface AddressBookState extends EntityState<AddressEntry> {
+  addresses: AddressEntry[]
 }
 
-export function createInitialState(): AddressBookState {
-  return {
-    key: ''
-  };
-}
+const initialState = {
+  addresses: []
+};
 
 @Injectable({ providedIn: 'root' })
 @StoreConfig({ name: 'address-book' })
-export class AddressBookStore extends Store<AddressBookState> {
+export class AddressBookStore extends EntityStore<AddressBookState> {
 
   constructor() {
-    super(createInitialState());
+    super(initialState);
   }
 
 }
