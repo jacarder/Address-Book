@@ -9,8 +9,11 @@ const routes: Routes = [
   {
     path: 'details',
     loadChildren: () => import('./modules/person-details/person-details.module').then(m => m.PersonDetailsModule)
+  },
+  {
+    path: "**",
+    redirectTo: 'address-book'
   }
-  //  TODO add default path
 ];
 
 @NgModule({
