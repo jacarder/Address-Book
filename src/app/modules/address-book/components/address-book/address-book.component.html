@@ -1,3 +1,6 @@
-<ng-container *ngFor="let item of (addressList$ | async)">
-	<address-card [addressEntry]="item"></address-card>
-</ng-container>
+<div class="address-book-container">
+	<address-card 
+		*ngFor="let item of addressList$ | async" 
+		[addressEntry]="item">
+	</address-card>
+</div>
