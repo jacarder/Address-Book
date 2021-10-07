@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'address-book',
-    loadChildren: () => import('./modules/address-book/address-book-routing.module').then(m => m.AddressBookRoutingModule)
+    loadChildren: () => import('./modules/address-book/address-book.module').then(m => m.AddressBookModule)
   },
   {
     path: 'details',
