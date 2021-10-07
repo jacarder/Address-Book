@@ -27,7 +27,7 @@ export class AddressBookService {
               last: entry.name.last
             },
             location: {
-              street: entry.location.street,
+              street: `${entry.location.street.number} ${entry.location.street.name}`,
               city: entry.location.city,
               state: entry.location.state,
               postcode: entry.location.postcode

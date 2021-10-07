@@ -1,1 +1,3 @@
-<p>address-book works!</p>
+<ng-container *ngFor="let item of (addressList$ | async)">
+	<address-card [addressEntry]="item"></address-card>
+</ng-container>

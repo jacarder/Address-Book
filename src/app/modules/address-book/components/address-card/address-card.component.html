@@ -1,1 +1,17 @@
-<p>address-card works!</p>
+<img [src]="addressEntry.picture.thumbnail"/>
+<div *ngIf="addressEntry.name as name">
+	<p>{{name.first}} {{name.last}}</p>
+</div>
+<div *ngIf="addressEntry.location as location">
+	<p>{{location.street}}</p>
+	<p>{{location.city}}, {{location.state}} {{location.postcode}}</p>
+</div>
+<div *ngIf="addressEntry.phone as phone">
+	<p>Home Phone: {{phone}}</p>
+</div>
+<div *ngIf="addressEntry.cell as cell">
+	<p>Cell Phone: {{cell}}</p>
+</div>
+<div *ngIf="addressEntry.email as email">
+	<p>Email: {{email}}</p>
+</div>  

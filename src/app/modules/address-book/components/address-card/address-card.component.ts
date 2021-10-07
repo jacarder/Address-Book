@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { AddressEntry } from '../../state/address-Entry.model';
 
 @Component({
-  selector: 'app-address-card',
+  selector: 'address-card',
   templateUrl: './address-card.component.html',
   styleUrls: ['./address-card.component.scss']
 })
 export class AddressCardComponent implements OnInit {
+
+  @Input() addressEntry: AddressEntry;
 
   constructor() { }
 

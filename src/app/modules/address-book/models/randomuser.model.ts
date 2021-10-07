@@ -35,8 +35,13 @@ export interface ID {
     value: string;
 }
 
+export interface Street {
+    number:      string;
+    name:        string;
+}
+
 export interface Location {
-    street:      string;
+    street:      Street;
     city:        string;
     state:       string;
     postcode:    string;
