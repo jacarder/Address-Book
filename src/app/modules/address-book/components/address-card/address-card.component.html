@@ -1,17 +1,14 @@
-<img [src]="addressEntry.picture.thumbnail"/>
-<div *ngIf="addressEntry.name as name">
-	<p>{{name.first}} {{name.last}}</p>
-</div>
-<div *ngIf="addressEntry.location as location">
-	<p>{{location.street}}</p>
-	<p>{{location.city}}, {{location.state}} {{location.postcode}}</p>
-</div>
-<div *ngIf="addressEntry.phone as phone">
-	<p>Home Phone: {{phone}}</p>
-</div>
-<div *ngIf="addressEntry.cell as cell">
-	<p>Cell Phone: {{cell}}</p>
-</div>
-<div *ngIf="addressEntry.email as email">
-	<p>Email: {{email}}</p>
-</div>  
+<mat-card>
+	<mat-card-header *ngIf="addressEntry.name as name">
+		<img mat-card-avatar *ngIf="addressEntry.picture.thumbnail as thumbnail" [src]="thumbnail"/>
+		<mat-card-title>{{name.first}} {{name.last}}</mat-card-title>
+		<mat-card-subtitle>Address</mat-card-subtitle>
+	</mat-card-header>
+	<mat-card-content *ngIf="addressEntry.location as location">
+		<p>{{location.street}}</p>
+		<p>{{location.city}}, {{location.state}} {{location.postcode}}</p>
+	</mat-card-content>
+	<mat-card-actions>
+	  <button mat-raised-button color="primary" routerLink="/details?id={{addressEntry.id}}">View Details</button>
+	</mat-card-actions>	
+</mat-card>
