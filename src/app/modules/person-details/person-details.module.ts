@@ -5,7 +5,7 @@ import { PersonDetailsRoutingModule } from './person-details-routing.module';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
-
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import {MatIconModule} from '@angular/material/icon';
     PersonDetailsRoutingModule,
     MatListModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule    
   ]
 })
 export class PersonDetailsModule { }

@@ -1,7 +1,7 @@
-<mat-card *ngIf="(addressEntry$ | async) as addressEntry">
+<mat-card id="mat-card" *ngIf="(addressEntry$ | async) as addressEntry">
 	<mat-card-title-group *ngIf="addressEntry.name as name">
 	  <mat-card-title>{{name.first}} {{name.last}}</mat-card-title>
-	  <img mat-card-lg-image *ngIf="addressEntry.picture.medium as image" [src]="image">
+	  <img mat-card-lg-image *ngIf="addressEntry.picture.large as large" [src]="large">
 	</mat-card-title-group>
 	<mat-card-content>
 		<mat-list>
@@ -38,3 +38,4 @@
 		</mat-list>
 	</mat-card-content>
 </mat-card>
+<button mat-raised-button color="primary" id="back-button" [routerLink]="['/address-book']">Back</button>		
