@@ -1,27 +1,34 @@
 # AddressBook
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
+Project that uses Angular and Akita state management. Was looking to get some more practice with Akita and decided this would be a great opportunity to do so.
 
-## Development server
+- `npm install`
+- `npm start`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Summary
 
-## Code scaffolding
+I decided to utilize [Akita](https://datorama.github.io/akita/) and alternative to using NgRx. After having some time with NgRx, I said enough was enough. We know that state management should be used only when needed and this project may have been overkill, but it's the concepts that matter. I also wanted to give [Angular Material](https://material.angular.io/) a try again. Even after this I still feel Angular Material is limiting and that there are better packages to choose from.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Overall view of my process:
+- Decide packages 
+- Scaffold some of the component in mind
+- Impliment the pages
+- Final touches
 
-## Build
+## Features
+- Akita state management
+-- Address book state
+-- Search filter state
+- Dynamic Search
+- Angular Material
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Given more time I would have liked to have completed: 
+- Use something other than Angular Material—just too limiting. The time to take to change would be significant since I would have to go through the HTML and remove and redo the CSS—no more than a couple hours. 
+- Pagination would've been neat—especially with state management—not long to implement.
+- Most of these wouldn't take too much time, but it's all relative isn't it.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Given more time to make the app more robust I would've:
+- Added admin page to add, update, and remove entries. Not too much time, but most certainly more than a day.
+-- Create a backend to see the results based on the actions above. Would take time to set up a back end server and database. More than a day.
+- Authentication. Another great benefit with state management. Couple of hours
+- Animation to help with change blindness. More than a day depending on how fancy.
