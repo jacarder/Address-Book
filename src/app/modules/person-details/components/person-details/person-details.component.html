@@ -1,1 +1,40 @@
-<p>person-details works!</p>
+<mat-card *ngIf="(addressEntry$ | async) as addressEntry">
+	<mat-card-title-group *ngIf="addressEntry.name as name">
+	  <mat-card-title>{{name.first}} {{name.last}}</mat-card-title>
+	  <img mat-card-lg-image *ngIf="addressEntry.picture.medium as image" [src]="image">
+	</mat-card-title-group>
+	<mat-card-content>
+		<mat-list>
+			<ng-container *ngIf="addressEntry.location as location">
+				<div mat-subheader>Address</div>
+				<mat-list-item>
+					<mat-icon mat-list-icon>home</mat-icon>
+					<div mat-line>{{location.street}}</div>
+					<div mat-line>{{location.city}}, {{location.state}} {{location.postcode}}</div>	
+				</mat-list-item>	
+				<mat-divider></mat-divider>
+			</ng-container>
+			<ng-container *ngIf="addressEntry.phone || addressEntry.cell">
+				<div mat-subheader>Phone Numbers</div>
+				<mat-list-item>
+					<mat-icon mat-list-icon>phone</mat-icon>
+					<div mat-line>Home Phone</div>					
+					<div mat-line>{{addressEntry.phone}}</div>
+				</mat-list-item>
+				<mat-list-item>
+					<mat-icon mat-list-icon>phone_android</mat-icon>
+					<div mat-line>Cell Phone</div>	
+					<div mat-line>{{addressEntry.cell}}</div>
+				</mat-list-item>
+				<mat-divider></mat-divider>				
+			</ng-container>
+			<ng-container *ngIf="addressEntry.email as email">
+				<div mat-subheader>Email</div>
+				<mat-list-item>
+					<mat-icon mat-list-icon>email</mat-icon>
+					<div mat-line>{{addressEntry.email}}</div>
+				</mat-list-item>
+			</ng-container>
+		</mat-list>
+	</mat-card-content>
+</mat-card>
