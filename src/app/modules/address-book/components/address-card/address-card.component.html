@@ -9,6 +9,6 @@
 		<p>{{location.city}}, {{location.state}} {{location.postcode}}</p>
 	</mat-card-content>
 	<mat-card-actions>
-	  <button mat-raised-button color="primary" routerLink="/details?id={{addressEntry.id}}">View Details</button>
+	  <button mat-raised-button color="primary" [routerLink]="['/details', addressEntry.id]">View Details</button>
 	</mat-card-actions>	
 </mat-card>
