@@ -17,7 +17,7 @@ export class AddressBookService {
 
   get(): Observable<AddressEntry[]> {
     this.addressBook.setLoading(true);
-    return this.http.get<IRandomUserResponse>("https://randomuser.me/api/?results=10").pipe(
+    return this.http.get<IRandomUserResponse>("https://randomuser.me/api/?results=10&seed=foobar&nat=us").pipe(
       map((list: IRandomUserResponse) => {
         return list.results.map(entry => {
           let newEntry = {
@@ -62,10 +62,6 @@ export class AddressBookService {
   add(address: AddressEntry) {
     this.addressBook.add(address);
   }
-
-  // update(id, friend: Partial<Friend>) {
-  //   this.addressBook.update(id, friend);
-  // }
 
   remove(id: number) {
     this.addressBook.remove(id);

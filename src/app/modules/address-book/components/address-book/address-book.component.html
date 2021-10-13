@@ -1,6 +1,14 @@
 <div class="address-book-container">
-	<address-card 
-		*ngFor="let item of addressList$ | async" 
-		[addressEntry]="item">
-	</address-card>
+
+	<ng-container *ngIf="(addressList$ | async) as addressList">
+		<ng-container *ngIf="addressList.length > 0; else noAddressesTemplate">
+			<address-card 
+				*ngFor="let item of addressList" 
+				[addressEntry]="item">
+			</address-card>
+		</ng-container>
+		<ng-template #noAddressesTemplate>
+			<mat-card class="no-address-message">No addresses found with search result</mat-card>
+		</ng-template>		
+	</ng-container>
 </div>

@@ -11,7 +11,7 @@ export class AddressBookQuery extends Query<AddressBookState> {
     super(store);
   }
 
-  selectAddresses(): Observable<any> {
+  selectAddresses(): Observable<AddressEntry[]> {
     return this.select(state => state.addresses);
   }
 
