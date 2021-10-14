@@ -1,21 +1,32 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { AddressCardComponent } from './address-card.component';
 import { AddressEntry, createAddressBookEntry } from '../../state/address-Entry.model';
 import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
+import { AddressBookComponent } from '../address-book/address-book.component';
+import { PersonDetailsComponent } from 'src/app/modules/person-details/components/person-details/person-details.component';
+import { CommonModule } from '@angular/common';
 
 describe('AddressCardComponent', () => {
   let component: AddressCardComponent;
   let fixture: ComponentFixture<AddressCardComponent>;
   let addressEntry: AddressEntry;
+  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
+        CommonModule,
         MatCardModule,
         MatButtonModule,
-        RouterTestingModule 
+        RouterTestingModule.withRoutes(
+          [
+            {path: 'address-book', component: AddressBookComponent},
+            {path: 'details/:id', component: PersonDetailsComponent},
+          ]
+        )        
       ],
       declarations: [ AddressCardComponent ]    
     })
@@ -48,6 +59,7 @@ describe('AddressCardComponent', () => {
     }    
     component.addressEntry = createAddressBookEntry(addressEntry)
     fixture.detectChanges();
+    router = TestBed.inject(Router)
   });
 
   it('should create', () => {
@@ -100,10 +112,23 @@ describe('AddressCardComponent', () => {
     component.addressEntry.location.state = "";
     component.addressEntry.location.postcode = "";
     fixture.detectChanges();
-    const matContent: Element = fixture.debugElement.nativeElement.querySelector('p');
+    const matConent: Element = fixture.debugElement.nativeElement.querySelector('p');
     const actual = 'No location on file';
-    const expected = matContent.innerHTML;
+    const expected = matConent.innerHTML;
     expect(expected).toBe(actual);
   });
+  //  Begin testing button view details
+  it('View Detail button should route to "/details" route', fakeAsync(() => {
+    component.addressEntry.id = "1111";
+    fixture.detectChanges();
+    const button = fixture.debugElement.nativeElement.querySelector('button');
+    button.click();
+    tick();
+    const actual = '/details/1111';
+    const expected = router.url;
+    fixture.whenStable().then(() => {
+      expect(expected).toBe(actual);
+    });    
+  }));
 
 });
