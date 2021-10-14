@@ -10,8 +10,13 @@
 		<mat-card-subtitle>Address</mat-card-subtitle>
 	</mat-card-header>
 	<mat-card-content *ngIf="addressEntry.location as location">
-		<p>{{location.street}}</p>
-		<p>{{location.city}}, {{location.state}} {{location.postcode}}</p>
+		<ng-container *ngIf="location.street && location.city && location.state && location.postcode; else noLocationTemplate">
+			<p>{{location.street}}</p>
+			<p>{{location.city}}, {{location.state}} {{location.postcode}}</p>
+		</ng-container>
+		<ng-template #noLocationTemplate>
+			<p>No location on file</p>
+		</ng-template>
 	</mat-card-content>
 	<mat-card-actions>
 	  <button mat-raised-button color="primary" [routerLink]="['/details', addressEntry.id]">View Details</button>
