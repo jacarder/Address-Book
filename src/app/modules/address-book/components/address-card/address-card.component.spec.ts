@@ -100,9 +100,9 @@ describe('AddressCardComponent', () => {
     component.addressEntry.location.state = "";
     component.addressEntry.location.postcode = "";
     fixture.detectChanges();
-    const matTitle: Element = fixture.debugElement.nativeElement.querySelector('p');
+    const matContent: Element = fixture.debugElement.nativeElement.querySelector('p');
     const actual = 'No location on file';
-    const expected = matTitle.innerHTML;
+    const expected = matContent.innerHTML;
     expect(expected).toBe(actual);
   });
 
