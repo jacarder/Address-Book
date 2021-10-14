@@ -1,7 +1,12 @@
 <mat-card>
 	<mat-card-header *ngIf="addressEntry.name as name">
 		<img mat-card-avatar *ngIf="addressEntry.picture.thumbnail as thumbnail" [src]="thumbnail"/>
-		<mat-card-title>{{name.first}} {{name.last}}</mat-card-title>
+		<ng-container *ngIf="name.first || name.last; else noNameTemplate">
+			<mat-card-title>{{name.first}} {{name.last}}</mat-card-title>
+		</ng-container>
+		<ng-template #noNameTemplate>
+			<mat-card-title>No name on file</mat-card-title>
+		</ng-template>
 		<mat-card-subtitle>Address</mat-card-subtitle>
 	</mat-card-header>
 	<mat-card-content *ngIf="addressEntry.location as location">
