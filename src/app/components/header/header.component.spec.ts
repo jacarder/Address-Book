@@ -44,7 +44,7 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('search input should on address-book route', (done) => {
+  it('search input should be on address-book route', (done) => {
     router.navigateByUrl('/address-book').then(() => {
       const inputElement = fixture.debugElement.nativeElement;
       expect(inputElement).not.toBeNull()
