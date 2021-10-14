@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -48,6 +48,7 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  //  Begin testing search bar
   it('search input should be on address-book route', (done) => {
     router.navigateByUrl('/address-book').then(() => {
       fixture.detectChanges();
@@ -56,10 +57,15 @@ describe('HeaderComponent', () => {
       done();
     }) 
   });
-
-  // it('search input should show on any router other than address-book', () => {
-  //   const inputElement = fixture.debugElement.nativeElement.querySelector('input');
-  //   router.navigateByUrl('/details/1')
-  //   expect(inputElement).not.toBeNull()
-  // });
+  //  Begin testing home button  
+  it('Address Book home button should route to "/address-book" route', fakeAsync(() => {
+    const button = fixture.debugElement.nativeElement.querySelector('#home-button');
+    button.click();
+    tick();
+    const actual = '/address-book';
+    const expected = router.url;
+    fixture.whenStable().then(() => {
+      expect(expected).toBe(actual);
+    });    
+  }));  
 });
