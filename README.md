@@ -24,9 +24,10 @@ I decided to utilize [Akita](https://datorama.github.io/akita/) an alternative t
 - Angular Material
 
 ## Given more time I would have liked to have completed: 
-- Use something other than Angular Material—just too limiting. The time to take to change would be significant since I would have to go through the HTML and remove and redo the CSS—no more than a couple hours. 
+- Use something other than Angular Material—just too limiting. The time to make the change would be significant since I would have to go through the HTML and remove and redo the CSS—no more than a couple hours. 
 - Pagination would've been neat—especially with state management—not long to implement.
 - Most of these wouldn't take too much time, but it's all relative isn't it.
+- Utilize Akita query `selectLoading()` observable. Had it laid out, but didn't have time to impliment. Pretty quick to impliment.
 
 ## Given more time to make the app more robust I would've:
 - Added admin page to add, update, and remove entries. Not too much time, but most certainly more than a day.
