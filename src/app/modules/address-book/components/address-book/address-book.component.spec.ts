@@ -18,6 +18,7 @@ describe('AddressBookComponent', () => {
   let fixture: ComponentFixture<AddressBookComponent>;
   let addressBookStore: AddressBookStore;
   let filterStore: FilterStore;
+  let filterService: FilterService;
   let addressEntry: AddressEntry;
 
   beforeEach(async () => {
@@ -40,6 +41,7 @@ describe('AddressBookComponent', () => {
     component = fixture.componentInstance;
     addressBookStore = TestBed.inject(AddressBookStore);
     filterStore = TestBed.inject(FilterStore);
+    filterService = TestBed.inject(FilterService);
     addressEntry = {
       id: '',
       name: {
@@ -87,5 +89,21 @@ describe('AddressBookComponent', () => {
     const expected = cards.length;
     expect(expected).toEqual(actual);
   });  
-
+  
+  it('given filter "1" and two addresses, should render one address-card with street "123"', () => {
+    addressEntry.location.street = "333"
+    let address1 = JSON.parse(JSON.stringify(addressEntry));
+    addressEntry.location.street = "123"
+    let address2 = JSON.parse(JSON.stringify(addressEntry));
+    let addressBookState: AddressBookState = {
+      addresses: [address1, address2]
+    }
+    filterService.updateFilter("1");
+    addressBookStore.update(addressBookState);      
+    fixture.detectChanges();
+    const cards: Element[] = fixture.debugElement.nativeElement.querySelectorAll('address-card');
+    const actual = 1;
+    const expected = cards.length;
+    expect(expected).toEqual(actual);
+  });    
 });
