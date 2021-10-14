@@ -7,6 +7,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { HeaderComponent } from './header.component';
 import { AddressBookComponent } from 'src/app/modules/address-book/components/address-book/address-book.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -19,6 +21,8 @@ describe('HeaderComponent', () => {
         MatToolbarModule,
         MatInputModule,
         MatFormFieldModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
         RouterTestingModule.withRoutes(
           [
             {path: 'address-book', component: AddressBookComponent},
@@ -46,7 +50,8 @@ describe('HeaderComponent', () => {
 
   it('search input should be on address-book route', (done) => {
     router.navigateByUrl('/address-book').then(() => {
-      const inputElement = fixture.debugElement.nativeElement;
+      fixture.detectChanges();
+      const inputElement = fixture.debugElement.nativeElement.querySelector('input');
       expect(inputElement).not.toBeNull()
       done();
     }) 
