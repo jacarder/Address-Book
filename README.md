@@ -2,8 +2,12 @@
 
 Project that uses Angular and Akita state management. Was looking to get some more practice with Akita and decided this would be a great opportunity to do so.
 
+To run app:
 - `npm install`
 - `npm start`
+
+To run testing:
+- `npm test`
 
 # Summary
 
