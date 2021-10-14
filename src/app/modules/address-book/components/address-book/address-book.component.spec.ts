@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AddressBookQuery } from '../../state/address-book.query';
+import { FilterQuery } from '../../state/filter.query';
+import {MatCardModule} from '@angular/material/card';
 
 import { AddressBookComponent } from './address-book.component';
 
@@ -8,7 +11,14 @@ describe('AddressBookComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddressBookComponent ]
+      imports: [
+        MatCardModule
+      ],
+      declarations: [ AddressBookComponent ],
+      providers: [
+        AddressBookQuery,
+        FilterQuery
+      ]
     })
     .compileComponents();
   });
@@ -22,4 +32,12 @@ describe('AddressBookComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+  // it('should render error message no addresses found', () => {
+  //   fixture.detectChanges();
+  //   const compiled = fixture.nativeElement as HTMLElement;
+  //   expect(compiled.querySelector('.content span')?.textContent).toContain('address-book app is running!');
+  // });
+
 });

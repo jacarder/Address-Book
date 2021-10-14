@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
 import { AddressCardComponent } from './address-card.component';
+import { createAddressBookEntry } from '../../state/address-Entry.model';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AddressCardComponent', () => {
   let component: AddressCardComponent;
@@ -8,7 +11,12 @@ describe('AddressCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddressCardComponent ]
+      imports: [
+        MatCardModule,
+        MatButtonModule,
+        RouterTestingModule 
+      ],
+      declarations: [ AddressCardComponent ]    
     })
     .compileComponents();
   });
@@ -16,6 +24,28 @@ describe('AddressCardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AddressCardComponent);
     component = fixture.componentInstance;
+    let addressEntry = {
+      id: '',
+      name: {
+        first: '',
+        last: ''
+      },
+      location: {
+        street: '',
+        city: '',
+        state: '',
+        postcode: '',
+      },
+      email: '',
+      phone: '',
+      cell: '',
+      picture: {
+        large: '',
+        medium: '',
+        thumbnail: ''
+      } 
+    }    
+    component.addressEntry = createAddressBookEntry(addressEntry)
     fixture.detectChanges();
   });
 
